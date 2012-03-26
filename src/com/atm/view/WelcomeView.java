@@ -78,6 +78,9 @@ public class WelcomeView extends JFrame {
 		panel.add(pinTextField);
 	}
 	
+	//-------------------------------------
+	// Centers the frame or window screen
+	//-------------------------------------
 	private void centerScreen() 
 	{
 		toolkit = getToolkit();
