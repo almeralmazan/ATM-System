@@ -20,6 +20,8 @@ public class Menu extends JFrame
 	private Toolkit toolkit;
 	private Dimension size;
 	private Depositor depositor;
+	private String inputOldPIN;
+	private String newPIN;
 	
 	/**
 	 * Create the frame.
@@ -95,6 +97,29 @@ public class Menu extends JFrame
 		
 		// Change PIN
 		JButton btnChangePin = new JButton("Change PIN");
+		btnChangePin.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				inputOldPIN = JOptionPane.showInputDialog("Enter old password:");
+				
+				if (inputOldPIN != null && inputOldPIN.equals(depositor.getPin()))
+				{
+					newPIN = JOptionPane.showInputDialog("Enter your new password:");
+					depositor.setPin(newPIN);
+				}
+				else
+				{
+					inputOldPIN = JOptionPane.showInputDialog("Please re-enter old password:");
+					while( ! inputOldPIN.equals(depositor.getPin()))
+					{
+						inputOldPIN = JOptionPane.showInputDialog("Please re-enter old password:");
+					}
+					newPIN = JOptionPane.showInputDialog("Enter your new password:");
+					depositor.setPin(newPIN);
+				}
+			}
+		});
 		btnChangePin.setBounds(10, 143, 122, 33);
 		panel.add(btnChangePin);
 	}
