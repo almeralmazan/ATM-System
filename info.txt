@@ -1,0 +1,6 @@
+Time: 6:30PM
+Date: 3/26/2012
+
+Message:
+   This time I would refactor all my codes to
+   run smoothly and a clean code.
