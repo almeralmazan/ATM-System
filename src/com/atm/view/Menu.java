@@ -49,7 +49,25 @@ public class Menu extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-								
+				String inputValue = JOptionPane.showInputDialog("Please enter amount: ");
+				
+				if ( !isNum(inputValue) )
+				{
+					JOptionPane.showMessageDialog(null, "Not a valid number" );
+				}
+				else if ( inputValue == null)
+				{
+					JOptionPane.showMessageDialog(null, "You cancelled the transaction");
+				}
+				else if ( inputValue != null && isNum(inputValue) && Double.parseDouble(inputValue) < depositor.getBalance() )
+				{
+					JOptionPane.showMessageDialog(null, "Please get your cash!");
+					depositor.setBalance(depositor.getBalance() - Double.parseDouble(inputValue));
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Sorry! Your balance is not enough for this transaction");
+				}
 			}
 		});
 		btnWithdrawal.setBounds(10, 11, 122, 33);
@@ -74,7 +92,7 @@ public class Menu extends JFrame
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Finished printing.... Your account balance is P" + depositor.getBalance() );
+						JOptionPane.showMessageDialog(null, "Finished printing.... \nYour account balance is P" + depositor.getBalance() );
 					}
 
 				}
