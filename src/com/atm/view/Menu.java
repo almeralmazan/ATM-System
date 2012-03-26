@@ -43,7 +43,9 @@ public class Menu extends JFrame
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// Withdrawal
+		//-----------------------------------
+		// Withdraw functionality
+		//-----------------------------------
 		JButton btnWithdrawal = new JButton("Withdrawal");
 		btnWithdrawal.addActionListener(new ActionListener() 
 		{
@@ -73,7 +75,9 @@ public class Menu extends JFrame
 		btnWithdrawal.setBounds(10, 11, 122, 33);
 		panel.add(btnWithdrawal);
 		
-		// Deposit
+		//-----------------------------------
+		// Deposit functionality
+		//-----------------------------------
 		JButton btnDeposit = new JButton("Deposit");
 		btnDeposit.addActionListener(new ActionListener() 
 		{
@@ -101,7 +105,9 @@ public class Menu extends JFrame
 		btnDeposit.setBounds(10, 55, 122, 33);
 		panel.add(btnDeposit);
 		
-		// Inquire Balance
+		//-----------------------------------
+		// Inquire Balance functionality
+		//-----------------------------------
 		JButton btnInquireBalance = new JButton("Inquire Balance");
 		btnInquireBalance.addActionListener(new ActionListener()
 		{
@@ -113,7 +119,9 @@ public class Menu extends JFrame
 		btnInquireBalance.setBounds(10, 99, 122, 33);
 		panel.add(btnInquireBalance);
 		
-		// Change PIN
+		//-----------------------------------
+		// Change the stored old PIN
+		//-----------------------------------
 		JButton btnChangePin = new JButton("Change PIN");
 		btnChangePin.addActionListener(new ActionListener() 
 		{
@@ -142,6 +150,10 @@ public class Menu extends JFrame
 		panel.add(btnChangePin);
 	}
 	
+	//-----------------------------------
+	// Return true if the value is a
+	// number value otherwise false
+	//-----------------------------------
 	public boolean isNum(String s) 
 	{
 		try 
@@ -155,6 +167,9 @@ public class Menu extends JFrame
 		return true;
 	}
 
+	//-------------------------------------
+	// Centers the frame or window screen
+	//-------------------------------------
 	private void centerScreen() 
 	{
 		toolkit = getToolkit();
