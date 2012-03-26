@@ -13,8 +13,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.atm.controller.Depositor;
 
-public class Menu extends JFrame {
-
+public class Menu extends JFrame 
+{
 	private JPanel contentPane;
 
 	private Toolkit toolkit;
@@ -41,6 +41,7 @@ public class Menu extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		// Withdrawal
 		JButton btnWithdrawal = new JButton("Withdrawal");
 		btnWithdrawal.addActionListener(new ActionListener() 
 		{
@@ -55,19 +56,34 @@ public class Menu extends JFrame {
 		btnWithdrawal.setBounds(10, 11, 122, 33);
 		panel.add(btnWithdrawal);
 		
+		// Deposit
 		JButton btnDeposit = new JButton("Deposit");
+		btnDeposit.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				String inputValue = JOptionPane.showInputDialog("Please input a value");
+				if ( inputValue != null) {
+					depositor.deposit(Double.parseDouble(inputValue));
+				}
+			}
+		});
 		btnDeposit.setBounds(10, 55, 122, 33);
 		panel.add(btnDeposit);
 		
+		// Inquire Balance
 		JButton btnInquireBalance = new JButton("Inquire Balance");
-		btnInquireBalance.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnInquireBalance.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				JOptionPane.showMessageDialog(null, "Your current balance is P" + depositor.getBalance() );
 			}
 		});
 		btnInquireBalance.setBounds(10, 99, 122, 33);
 		panel.add(btnInquireBalance);
 		
+		// Change PIN
 		JButton btnChangePin = new JButton("Change PIN");
 		btnChangePin.setBounds(10, 143, 122, 33);
 		panel.add(btnChangePin);
