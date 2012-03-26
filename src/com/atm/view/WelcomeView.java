@@ -1,34 +1,25 @@
 package com.atm.view;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.atm.controller.Depositor;
+import com.utility.WinUtil;
 
-public class WelcomeView extends JFrame {
-
+public class WelcomeView extends JFrame 
+{
 	private JPanel contentPane;
 	private JPasswordField pinTextField;
 
 	private Toolkit toolkit;
 	private Dimension size;
-	/**
-	 * Create the frame.
-	 */
-	public WelcomeView()
-	{
+
+	public WelcomeView() {
 		centerScreen();
+		
 		setTitle("Welcome");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,10 +43,8 @@ public class WelcomeView extends JFrame {
 		panel.add(lblPleaseEnterPIN);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				Depositor depositor = new Depositor();
 				String storedPIN = depositor.getPin();
 				String pinInputted = String.valueOf(pinTextField.getPassword());
@@ -67,7 +56,6 @@ public class WelcomeView extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Incorrect PIN! Please try again...");
 				}
-				
 			}
 		});
 		btnOk.setBounds(115, 149, 89, 23);
@@ -81,8 +69,7 @@ public class WelcomeView extends JFrame {
 	//-------------------------------------
 	// Centers the frame or window screen
 	//-------------------------------------
-	private void centerScreen() 
-	{
+	private void centerScreen() {
 		toolkit = getToolkit();
 		size = toolkit.getScreenSize();
 		setSize(349, 248);

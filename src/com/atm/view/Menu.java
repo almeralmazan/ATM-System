@@ -1,20 +1,14 @@
 package com.atm.view;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.atm.controller.Depositor;
 
-public class Menu extends JFrame 
-{
+public class Menu extends JFrame {
 	private JPanel contentPane;
 
 	private Toolkit toolkit;
@@ -23,11 +17,7 @@ public class Menu extends JFrame
 	private String inputOldPIN;
 	private String newPIN;
 	
-	/**
-	 * Create the frame.
-	 */
-	public Menu() 
-	{
+	public Menu() {
 		centerScreen();
 		depositor = new Depositor();
 		setResizable(false);
@@ -47,7 +37,7 @@ public class Menu extends JFrame
 		// Withdraw functionality
 		//-----------------------------------
 		JButton btnWithdrawal = new JButton("Withdrawal");
-		btnWithdrawal.addActionListener(new ActionListener() 
+		btnWithdrawal.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -87,8 +77,11 @@ public class Menu extends JFrame
 				if ( inputValue != null)
 				{
 					depositor.deposit(Double.parseDouble(inputValue));
-					int response = JOptionPane.showConfirmDialog(null, "Do you want a receipt?", "Confirm",
-					        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					
+					int response = JOptionPane.showConfirmDialog(
+								null, "Do you want a receipt?", "Confirm",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+							);
 	
 					if (response == JOptionPane.NO_OPTION)
 					{
@@ -156,12 +149,10 @@ public class Menu extends JFrame
 	//-----------------------------------
 	public boolean isNum(String s) 
 	{
-		try 
-		{
+		try {
 			Double.parseDouble(s);
 		}
-		catch (NumberFormatException nfe) 
-		{
+		catch (NumberFormatException nfe) {
 			return false;
 		}
 		return true;
