@@ -1,3 +1,5 @@
 #file named .gitignore
 .classpath
 .project
+
+bin/

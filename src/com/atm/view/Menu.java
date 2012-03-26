@@ -47,10 +47,7 @@ public class Menu extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				/*WithdrawView wv = new WithdrawView();
-				setVisible(false);
-				wv.setVisible(true);*/
-				
+								
 			}
 		});
 		btnWithdrawal.setBounds(10, 11, 122, 33);
@@ -62,9 +59,22 @@ public class Menu extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				String inputValue = JOptionPane.showInputDialog("Please input a value");
-				if ( inputValue != null) {
+				String inputValue = JOptionPane.showInputDialog("Please enter amount: ");
+				if ( inputValue != null)
+				{
 					depositor.deposit(Double.parseDouble(inputValue));
+					int response = JOptionPane.showConfirmDialog(null, "Do you want a receipt?", "Confirm",
+					        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+	
+					if (response == JOptionPane.NO_OPTION)
+					{
+						JOptionPane.showMessageDialog(null, "Your account balance is P" + depositor.getBalance() );
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Finished printing.... Your account balance is P" + depositor.getBalance() );
+					}
+
 				}
 			}
 		});
