@@ -10,10 +10,21 @@ public class AtmTest
 	{
 		Scanner sc = new Scanner(System.in);
 		Depositor depositor = new Depositor();
+
 		int choice;
 		double amount;
-		String oldPassword;
+		String oldPIN;
 		String newPassword;
+		String inputPIN;
+		
+		System.out.println("Welcome to AMA Bank");
+		
+		oldPIN = depositor.getPin();
+		
+		do {
+			System.out.print("Enter your PIN: ");
+			inputPIN = sc.next();
+		} while( ! inputPIN.equals(oldPIN));
 		
 		do {
 			displayMenu();
@@ -30,7 +41,7 @@ public class AtmTest
 					System.out.print("Please enter amount: ");
 					amount = sc.nextDouble();
 					
-					displayFun("Processing transaction");
+					processFun("Processing transaction");
 										  
 					// If the amount entered is available
 					if (amount < depositor.getBalance()) {
@@ -38,7 +49,7 @@ public class AtmTest
 						System.out.println("\nGet your cash\n");
 						// do you want another transaction?
 					} else {
-						System.out.println("Sorry your balance is not enough for this transaction.");
+						System.out.println("\nSorry your balance is not enough for this transaction.");
 					}
 					break;
 				
@@ -53,7 +64,7 @@ public class AtmTest
 					System.out.print("Do you want a receipt? [y/n]: ");
 					String yOrN = sc.next();
 					if ( yOrN.equals("y") ) {
-						displayFun("Printing");
+						processFun("Printing");
 					}
 					System.out.println("\nYour current balance is P" + depositor.getBalance() + "\n");
 					break;
@@ -71,7 +82,7 @@ public class AtmTest
 					System.out.print("Enter old password: ");
 					String temp = sc.next();
 					
-					 while ( ! temp.equals(depositor.getPin()) ) {
+					 while ( ! temp.equals(oldPIN) ) {
 							System.out.print("Please re-enter old password: ");
 							temp = sc.next();
 					} 
@@ -93,7 +104,7 @@ public class AtmTest
 	}
 
 	// This is what I called FUN...
-	private static void displayFun(String message) throws InterruptedException
+	private static void processFun(String message) throws InterruptedException
 	{
 		System.out.println(message + ", please wait");
 		for (int i = 0; i < 5; i++) {
@@ -113,17 +124,4 @@ public class AtmTest
         System.out.println("=================\n");
 	}
 	
-	//-----------------------------------
-	// Return true if the value is a
-	// number value otherwise false
-	//-----------------------------------
-/*	private static boolean isNum(int num) 
-	{
-		try {
-			Integer.parseInt(num);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-		return true;
-	}*/
 }
