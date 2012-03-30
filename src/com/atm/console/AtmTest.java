@@ -2,6 +2,7 @@ package com.atm.console;
 
 import java.util.Scanner;
 
+import com.atm.controller.Atm;
 import com.atm.controller.Depositor;
 
 public class AtmTest 
@@ -27,7 +28,7 @@ public class AtmTest
 		} while( ! inputPIN.equals(oldPIN));
 		
 		do {
-			displayMenu();
+			Atm.displayMenu();
 			
 			System.out.println("\nSelect from menu by choosing");
 			System.out.print("number then press enter: ");
@@ -41,7 +42,7 @@ public class AtmTest
 					System.out.print("Please enter amount: ");
 					amount = sc.nextDouble();
 					
-					processFun("Processing transaction");
+					Atm.processFun("Processing transaction");
 										  
 					// If the amount entered is available
 					if (amount < depositor.getBalance()) {
@@ -64,7 +65,7 @@ public class AtmTest
 					System.out.print("Do you want a receipt? [y/n]: ");
 					String yOrN = sc.next();
 					if ( yOrN.equals("y") ) {
-						processFun("Printing");
+						Atm.processFun("Printing");
 					}
 					System.out.println("\nYour current balance is P" + depositor.getBalance() + "\n");
 					break;
@@ -100,28 +101,9 @@ public class AtmTest
 					System.out.println("\nGoodbye, have a nice day!!!");
 					break;
 			}
+			
 		} while(choice != 5);
-	}
-
-	// This is what I called FUN...
-	private static void processFun(String message) throws InterruptedException
-	{
-		System.out.println(message + ", please wait");
-		for (int i = 0; i < 5; i++) {
-			Thread.sleep(1000);
-			System.out.print(". ");
-		}
-	}
-
-	private static void displayMenu() 
-	{
-		System.out.println("\n================");
-		System.out.println("1. Withdraw");
-        System.out.println("2. Deposit");
-        System.out.println("3. Get Balance");
-        System.out.println("4. Change PIN");
-        System.out.println("5. Exit");
-        System.out.println("=================\n");
+		
 	}
 	
 }
