@@ -7,19 +7,15 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.atm.controller.Depositor;
-import com.utility.WinUtil;
+import com.utility.StaticUtils;
 
 public class WelcomeView extends JFrame 
 {
 	private JPanel contentPane;
 	private JPasswordField pinTextField;
 
-	private Toolkit toolkit;
-	private Dimension size;
-
 	public WelcomeView() {
-		centerScreen();
-		
+		setSize(349, 248);
 		setTitle("Welcome");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +49,7 @@ public class WelcomeView extends JFrame
 					Menu menu = new Menu();
 					setVisible(false);
 					menu.setVisible(true);
+					StaticUtils.center(menu);
 				} else {
 					JOptionPane.showMessageDialog(null, "Incorrect PIN! Please try again...");
 				}
@@ -66,13 +63,4 @@ public class WelcomeView extends JFrame
 		panel.add(pinTextField);
 	}
 	
-	//-------------------------------------
-	// Centers the frame or window screen
-	//-------------------------------------
-	private void centerScreen() {
-		toolkit = getToolkit();
-		size = toolkit.getScreenSize();
-		setSize(349, 248);
-		setLocation( (size.width/2 - getWidth()/2), (size.height/2 - getHeight()/2) );
-	}
 }

@@ -1,6 +1,5 @@
 package com.atm.view;
 
-import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -11,15 +10,13 @@ import com.atm.controller.Depositor;
 public class Menu extends JFrame {
 	private JPanel contentPane;
 
-	private Toolkit toolkit;
-	private Dimension size;
 	private Depositor depositor;
 	private String inputOldPIN;
 	private String newPIN;
 	
 	public Menu() {
-		centerScreen();
 		depositor = new Depositor();
+		setSize(168, 238);
 		setResizable(false);
 		setTitle("Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,14 +155,4 @@ public class Menu extends JFrame {
 		return true;
 	}
 
-	//-------------------------------------
-	// Centers the frame or window screen
-	//-------------------------------------
-	private void centerScreen() 
-	{
-		toolkit = getToolkit();
-		size = toolkit.getScreenSize();
-		setSize(168, 238);
-		setLocation( (size.width/2 - getWidth()/2), (size.height/2 - getHeight()/2) );
-	}
 }
